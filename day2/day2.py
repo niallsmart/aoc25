@@ -1,34 +1,23 @@
 #!/usr/bin/env python3
 
-# example.txt: 3
+# example.txt: 1227775554
+# input.txt: 37314786486
 
 import sys
-import operator
-from itertools import accumulate
-
-
-def divisors(n):
-    return [i for i in range(1, n) if n % i == 0]
 
 def is_valid_id(id):
     chars = str(id)
-    nchars = len(chars)
-    for d in divisors(nchars):
-        if (chars[0:d] * int(nchars / d)) == chars:
-            return False
-    return True
+    nchars = len(chars) // 2
+    return chars[0:nchars] != chars[nchars:]
 
 def sum_invalid_ids(ranges):
 
-    sum = 0
+    all = 0
 
     for start, end in ranges:
-        for i in range(start, end + 1):
-            if not is_valid_id(i):
-                print(f"Invalid ID: {i}")
-                sum += i
+        all += sum(i for i in range(start, end + 1) if not is_valid_id(i))
  
-    return sum
+    return all
 
 
 def main():
