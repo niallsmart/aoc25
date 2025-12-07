@@ -20,7 +20,6 @@ def process_loop(lines):
             password += 1
 
     return password
-        
 
 def process_func(lines):
     sign = {"L": 1, "R": -1}
@@ -34,12 +33,12 @@ def main():
         print(f"Usage: python {sys.argv[0]} <input-file> <expected>")
         sys.exit(1)
 
-    filename = sys.argv[1]
-    expected = int(sys.argv[2])
-    actual = process_func([line.rstrip("\n") for line in open(filename, "r")])
+    with open(sys.argv[1]) as f:
+        expected = int(sys.argv[2])
+        actual = process_func(f.read().splitlines())
 
-    assert actual == expected, f"Expected {expected}, got {actual}"
-    print(f"Success: {expected}")
+        assert actual == expected, f"Expected {expected}, got {actual}"
+        print(f"Success: {expected}")
 
 if __name__ == "__main__":
     main()
