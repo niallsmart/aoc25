@@ -5,17 +5,20 @@
 
 import sys
 
-def is_valid_id(id):
+def is_invalid_id(id):
     chars = str(id)
-    nchars = len(chars) // 2
-    return chars[0:nchars] != chars[nchars:]
+    nchars = len(chars)
+    if nchars % 2 != 0:
+        return False
+    nchars //= 2
+    return chars[0:nchars] == chars[nchars:]
 
 def sum_invalid_ids(ranges):
 
     all = 0
 
     for start, end in ranges:
-        all += sum(i for i in range(start, end + 1) if not is_valid_id(i))
+        all += sum(i for i in range(start, end + 1) if is_invalid_id(i))
  
     return all
 
@@ -36,6 +39,6 @@ def main():
         assert actual == expected, f"Expected {expected}, got {actual}"
         print(f"Success: {expected}")
 
-
 if __name__ == "__main__":
     main()
+
