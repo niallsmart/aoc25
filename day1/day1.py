@@ -22,7 +22,7 @@ def process_loop(lines):
     return password
 
 def process_func(lines):
-    sign = {"L": 1, "R": -1}
+    sign = {"L": -1, "R": +1}
     rotations = [int(l[1:]) * sign[l[0]] for l in lines]        
     dials = accumulate(rotations, operator.add, initial=50)
 
