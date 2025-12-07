@@ -13,8 +13,11 @@ def is_invalid_id(id):
     nchars //= 2
     return chars[0:nchars] == chars[nchars:]
 
-def sum_invalid_ids(ranges):
 
+def process(lines):
+    ranges = lines[0].split(",")
+    ranges = [tuple(map(int, r.split("-"))) for r in ranges]
+    
     all = 0
 
     for start, end in ranges:
@@ -29,12 +32,8 @@ def main():
         sys.exit(1)
 
     with open(sys.argv[1]) as f:
-
-        ranges = f.read().strip().split(",")
-        ranges = [tuple(map(int, r.split("-"))) for r in ranges]
-
-        actual = sum_invalid_ids(ranges)
         expected = sys.argv[2]
+        actual = str(process(f.read().splitlines()))
 
         assert actual == expected, f"Expected {expected}, got {actual}"
         print(f"Success: {expected}")
