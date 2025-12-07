@@ -1,0 +1,76 @@
+
+╭─── Claude Code v2.0.61 ──────────────────────────────────────────────────────╮
+│                             │ Tips for getting started                       │
+│     Welcome back Niall!     │ Run /init to create a CLAUDE.md file with ins… │
+│                             │ ────────────────────────────────────────────── │
+│          ▗ ▗   ▖ ▖          │ Recent activity                                │
+│                             │ No recent activity                             │
+│            ▘▘ ▝▝            │                                                │
+│                             │                                                │
+│   Sonnet 4.5 · Claude Pro   │                                                │
+│   ~/workspace/aoc25/day1    │                                                │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+> Read the problem statement in day1.txt. Create your own solution in 
+day1_claude.py. Ignore the existing solution in day1.py.  Do not read 
+day1.py at all. 
+
+⏺ I'll read the problem statement and create a solution for you.
+
+⏺ Read(day1.txt)
+  ⎿  Read 60 lines
+
+⏺ Now let me check if there's an input file:
+
+⏺ Search(pattern: "input*.txt")
+  ⎿  Found 1 file (ctrl+o to expand)
+
+⏺ Perfect! Now I'll create the solution:
+
+⏺ Write(day1_claude.py)
+  ⎿  Wrote 38 lines to day1_claude.py                                      
+     def solve(filename):
+         """
+         Solve the safe dial rotation puzzle.
+         The dial has numbers 0-99 in a circle.
+         Starting at 50, follow rotation instructions (L for left/lower, R 
+     for right/higher).
+         Count how many times the dial points at 0 after any rotation.
+         """
+         position = 50
+         zero_count = 0
+     … +28 lines (ctrl+o to expand)
+
+⏺ Now let's test it with the example to verify the logic is correct:
+
+⏺ Write(example.txt)
+  ⎿  Error writing file
+
+⏺ Bash(cat > /Users/niallsmart/workspace/aoc25/day1/example.txt << 'EOF'
+      L68…)
+  ⎿  (No content)
+
+⏺ Bash(python day1_claude.py)
+  ⎿  The password is: 1152
+
+⏺ Let me verify with the example first:
+
+⏺ Bash(python -c "from day1_claude import solve; print('Example result:',
+      solve('example.txt'))")
+  ⎿  Example result: 3
+
+⏺ Perfect! The solution works correctly. The example gives 3 (as expected),
+  and the actual input gives 1152 as the password.
+
+  The solution:
+  - Starts with the dial at position 50
+  - For each rotation instruction:
+    - Parses the direction (L or R) and distance
+    - Rotates left (subtract) or right (add) using modulo 100 to wrap around
+    - Counts each time the dial lands on 0
+  - Returns the total count of times the dial pointed at 0
+
+  The password for your input is 1152.
+
+
+
